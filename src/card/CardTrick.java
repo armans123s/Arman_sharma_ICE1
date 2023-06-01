@@ -21,10 +21,38 @@ public class CardTrick {
         for (int i=0; i<magicHand.length; i++)
         {
             Card c = new Card();
+             //c.setValue(insert call to random number generator here)
+            //c.setSuit(Card.SUITS[insert call to random number between 0-3 here])
             c.setValue((int) (Math.random() * 13) + 1);
             c.setSuit(Card.SUITS[(int) (Math.random() * 4)]);
             magicHand[i] = c;
         }
+         // Add the luckyCard with a card number and suit of your choosing
+        Card luckyCard = new Card();
+        luckyCard.setValue(7);  // Set the card number
+        luckyCard.setSuit(Card.SUITS[2]);  // Set the card suit
+        
+        boolean found = false;
+        for (Card card : magicHand) {
+            if (card.getValue() == luckyCard.getValue() && card.getSuit().equals(luckyCard.getSuit())) {
+                found = true;
+                break;
+            }
+        }
+        
+        System.out.println("Magic Hand:");
+        for (Card card : magicHand) {
+            System.out.println(card);
+        }
+        
+        System.out.println("Lucky Card: " + luckyCard);
+        
+        if (found) {
+            System.out.println("Your card is in the magic hand!");
+        } else {
+            System.out.println("Your card is not in the magic hand.");
+        }
+    }
 
         System.out.print("Enter your card value (1-13): ");
         int value = scanner.nextInt();
@@ -42,8 +70,7 @@ public class CardTrick {
                 break;
             }
         }
-             //c.setValue(insert call to random number generator here)
-            //c.setSuit(Card.SUITS[insert call to random number between 0-3 here])
+            
         
         
         //insert code to ask the user for Card value and suit, create their card
